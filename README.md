@@ -88,9 +88,6 @@ Call `calibrate(outputMax, outputMin, fullScale, Ratio, roomTemp)` for best accu
 | `getTemp()`   | Returns last temp reading (°C)                              |
 | `printRawData()` | Prints raw SPI data to Serial                          |
 
-## Example
-
-See [`../examples/sensor_example_with_init.cpp`](../../examples/sensor_example_with_init.cpp) for a full sketch.
 
 ## Notes
 
