@@ -43,6 +43,8 @@ void setup() {
     forceSensor.begin();
     // Optional calibration for precise results:
     forceSensor.calibrate(16383, 4159, 5.0, 1.0, 25.0); // Adjust as needed
+    // Set zero point (tare) after mounting sensor, before measurements:
+    forceSensor.set_zero();
 }
 ```
 
@@ -56,7 +58,7 @@ void loop() {
         Serial.print("Temp [°C]: ");
         Serial.println(forceSensor.getTemp());
     } else {
-        Serial.println("Sensor read error – check wiring/status!");
+        Serial.println("Sensor read error");
     }
     delay(500);
 }
@@ -87,6 +89,7 @@ Call `calibrate(outputMax, outputMin, fullScale, Ratio, roomTemp)` for best accu
 | `getForce()`  | Returns last force reading (mN)                             |
 | `getTemp()`   | Returns last temp reading (°C)                              |
 | `printRawData()` | Prints raw SPI data to Serial                          |
+| `set_zero()`   | Sets current sensor force as the new zero reference (tare)  |
 
 
 ## Notes
