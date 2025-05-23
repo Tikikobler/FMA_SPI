@@ -32,7 +32,7 @@ bool FMA_SPI::read() {
 }
 
 // Sensor calobration
-void FMA_SPI::calibrate(uint16_t outputMax, uint16_t outputMNin, float fullScale, float Ratio, float roomTemp){
+void FMA_SPI::calibrate(float roomTemp, uint16_t outputMax, uint16_t outputMNin, float fullScale, float Ratio){
   output_max = outputMax;
   output_min = outputMNin;
   fullscale = fullScale;
