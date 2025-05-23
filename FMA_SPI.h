@@ -37,6 +37,9 @@ class FMA_SPI {
     float getTemp();
     void  printRawData();
 
+    // setters
+    void set_zero();
+
   private:
     const int ssPin;
     int SPI_SPEED  = 800000;
@@ -46,6 +49,7 @@ class FMA_SPI {
     float sensor_status = 0.0; 
     float sensor_force = 0.0; //in mN
     float sensor_temp = 0.0; //in °C
+    float sensor_force_offset = 0.0; //in mN (offset of the sensor after zeroing)
 
     uint16_t output_max = 16383; // %80 of 14bit data.  // given by Honeywell
     uint16_t output_min = 4159;  // %20 of 14 bit data. // given by HoneyWell
