@@ -22,7 +22,7 @@ bool FMA_SPI::read() {
 
   // Extract 14-bit force
   sensor_force = float(raw_force_data & 0x3FFF);
-  sensor_force = (sensor_force - output_min) * fullscale * 1000.0 / (output_max - output_min) / ratio; // in mN
+  sensor_force = (sensor_force - output_min) * fullscale * 1000.0 / (output_max - output_min) / ratio - sensor_force_offset; // in mN
 
   // Extract 11-bit temperature (bits 15:5 of temp_data)
   sensor_temp = float((raw_temperature_data >> 5) & 0x7FF);
@@ -60,4 +60,16 @@ float FMA_SPI::getTemp(){
 void FMA_SPI::printRawData(){
   Serial.print("Force data: "); Serial.print(raw_force_data);
   Serial.print(" Temperature data: "); Serial.println(raw_temperature_data);
+}
+
+//setters
+void FMA_SPI::set_zero(){
+    bool status = read();
+    if (status){
+        sensor_force_offset = sensor_force;
+    }
+    else{
+        Serial.println("Error : could not read initial temperature");
+    }
+  return;
 }
