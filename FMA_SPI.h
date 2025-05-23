@@ -29,7 +29,7 @@ class FMA_SPI {
   public:
     FMA_SPI(int ssPin);
     void begin();
-    void calibrate(float roomTemp = 22.0, uint16_t outputMax, uint16_t outputMNin, float fullScale = 5.0, float Ratio = 1.0);
+    void calibrate(float roomTemp = 22.0, uint16_t outputMax = 16383, uint16_t outputMNin = 4159, float fullScale = 5.0, float Ratio = 1.0);
     bool read();
 
     // getters
